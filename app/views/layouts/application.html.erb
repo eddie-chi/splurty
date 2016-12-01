@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Splurty</title>
+  <title>Splurty | Random Quote Generator</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
@@ -12,21 +12,22 @@
     <%= link_to root_path, class: 'logo' do %>
    <div class="circle">
       <br />
-      Live
-      <br />
       Laugh
       <br />
-      and laugh some more
+      Out
+      <br />
+      Loud
     </div>
     <% end %>
   </div>
-  <div class="col-xs-4 slogan">
+  <div class="col-sm-4 hidden-xs slogan">
     Splurting out unsolicited advice about funny jokes since 2016
   </div>
-  <div class="col-xs-5 links">
+  <div class="col-xs-8 col-xs-offset-1 col-sm-offset-0 col-sm-5 links">
     <!-- Button trigger modal -->
-    <%= link_to 'Contribute', '#', data: {toggle: 'modal', target: '#myModal'} %>
     <%= link_to 'About', about_path %>
+    &nbsp;&nbsp;
+    <%= link_to 'Contribute', '#', data: {toggle: 'modal', target: '#myModal'} %>
   </div>
 </header>
 
@@ -40,8 +41,9 @@
         </div>
         <%= simple_form_for Quote.new do |f| %>
         <div class="modal-body">
-            <%= f.input :saying %>
-            <%= f.input :author %>
+            <%= f.input :saying, label: "What is the saying you want to add?", placeholder: "Blind is he who only sees one side" %>
+            <br />
+            <%= f.input :author, label: "Who is the author of the quote?", placeholder: "Jeff Stein" %>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -53,7 +55,7 @@
   </div>
 
 <hr />
-<br clear="clear" />
+<br class="clear" />
 <div class="container">
   <% if flash[:error].present? %>
     <div class="col-xs-10 col-xs-offset-1 alert alert-danger">
@@ -65,12 +67,15 @@
 <div class="footer">
   <div class="container">
     <div class="col-xs-6">
-      <% link_to "This isn't enough, I need more", root_path, class: 'next-quote' %>
-      <%= link_to "This isn't enough, I need more", "#", class: 'next-quote' %>
+      <%= link_to "This isn't enough, I need more", root_path, class: 'next-quote' %>
      </div>
      <div class="col-xs-6 footer-blurb">
-       Coding Bootcamp</a><br />
-       Want to build your own Splurty Web App - <a href="http://thefirehoseproject.com">Learn how to code here</a>
+       <small>Proudly Made by Eddie K.</small>
+       <br />
+       <small>Want to build your own Splurty Web App?</small>
+       <smalll>
+        Learn how to code <a href="http://thefirehoseproject.com">here</a>
+      </small>
      </div>
   </div>
 </div>
